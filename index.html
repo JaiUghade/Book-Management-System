@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 18px; /* Increase font size */
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    .book {
+      background: #fff;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .book h2 {
+      margin: 0;
+      color: #555;
+    }
+    .book p {
+      margin: 5px 0;
+    }
+    .reviews {
+      margin-top: 10px;
+      padding-left: 20px;
+      border-left: 3px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Book Dashboard</h1>
+  <div id="books"></div>
+
+  <script>
+    // Fetch books from the API
+    fetch('http://localhost:3000/books')
+      .then(response => response.json())
+      .then(data => {
+        const booksContainer = document.getElementById('books');
+        data.forEach(book => {
+          const bookDiv = document.createElement('div');
+          bookDiv.className = 'book';
+          bookDiv.innerHTML = `
+            <h2>${book.title}</h2>
+            <p><strong>Author:</strong> ${book.author}</p>
+            <p><strong>ISBN:</strong> ${book.isbn}</p>
+            <div class="reviews">
+              <h3>Reviews:</h3>
+              ${book.reviews.map(review => `
+                <p><strong>${review.username}:</strong> ${review.review}</p>
+              `).join('')}
+            </div>
+          `;
+          booksContainer.appendChild(bookDiv);
+        });
+      })
+      .catch(error => console.error('Error fetching books:', error));
+  </script>
+</body>
+</html>
