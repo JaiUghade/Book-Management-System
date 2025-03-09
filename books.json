@@ -1,0 +1,31 @@
+[
+    {
+      "isbn": "12345",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "reviews": [
+        { "username": "user1", "review": "Great book!" },
+        { "username": "user2", "review": "Loved it!" }
+      ]
+    },
+    {
+      "isbn": "67890",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "reviews": [
+        { "username": "user1", "review": "Amazing!" }
+      ]
+    },
+    {
+      "isbn": "11223",
+      "title": "1984",
+      "author": "George Orwell",
+      "reviews": []
+    },
+    {
+      "isbn": "44556",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "reviews": []
+    }
+  ]
